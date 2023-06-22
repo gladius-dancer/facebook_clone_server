@@ -4,7 +4,8 @@
   "description": "MERN",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "vercel-build": "node index.js"
   },
   "author": "RT",
   "license": "ISC",
