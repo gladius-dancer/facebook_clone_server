@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Sixth">
+    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Seventh">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/prod.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/.gitkeep" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vercel.json" beforeDir="false" afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +87,7 @@
       <workItem from="1687377028107" duration="244000" />
       <workItem from="1687377336274" duration="29000" />
       <workItem from="1687377604867" duration="3475000" />
-      <workItem from="1687411896140" duration="1996000" />
+      <workItem from="1687411896140" duration="2533000" />
     </task>
     <task id="LOCAL-00001" summary="Second">
       <created>1687378345292</created>
@@ -129,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687413780785</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Seventh">
+      <created>1687414371826</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687414371826</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,6 +161,7 @@
     <MESSAGE value="Fourth" />
     <MESSAGE value="Fivth" />
     <MESSAGE value="Sixth" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sixth" />
+    <MESSAGE value="Seventh" />
+    <option name="LAST_COMMIT_MESSAGE" value="Seventh" />
   </component>
 </project>
