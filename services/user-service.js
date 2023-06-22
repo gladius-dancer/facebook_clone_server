@@ -7,14 +7,14 @@ const UserDto = require("../dtos/user-dto");
 const ApiError = require("../exceptions/api-error");
 
 class UserService{
-    async register(firstName, lastName, date, email, password, tel_number, gender){
+    async register(firstName, lastName, date, email, password, gender){
         const candidat = await UserModel.findOne({email});
         if(candidat){
             throw ApiError.BadRequest("A user with this email address already exists!")
         }
         const hashpassword = await bcrypt.hash(password, 3);
         const activationLink = uuid.v4();
-        const user = await UserModel.create({firstName, lastName, date, email, password: hashpassword, tel_number, gender, activationLink});
+        const user = await UserModel.create({firstName, lastName, date, email, password: hashpassword, gender, activationLink});
         await mailService.sendMailActivation(email, `${process.env.API_URL}/api/activate/${activationLink}`);
         const userDto = new UserDto(user);
         const tokens = tokenServices.generateTokens({...userDto});
