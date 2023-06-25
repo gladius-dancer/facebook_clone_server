@@ -29,7 +29,6 @@ class UserService{
             throw ApiError.BadRequest("Not corrected link!");
         }
 
-
         user.isActive = true;
         await user.save();
     }
