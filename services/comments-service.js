@@ -4,6 +4,7 @@ const ApiError = require("../exceptions/api-error");
 class PostsService{
     async addComment(user_id, posts_id, text, date){
         const comment = await CommentsModel.create({user_id, posts_id, text, date});
+        return comment;
     }
     async getAllComments() {
         const comments = await CommentsModel.find();

@@ -5,10 +5,6 @@ const ApiError = require("../exceptions/api-error");
 class PostsController{
     async addPost(req, res, next){
         try {
-            const errors = validationResult(req);
-            if(!errors.isEmpty()){
-                throw next(ApiError.BadRequest("Validation error", errors.array()));
-            }
             const {user_id, posts_id, text, image, date, likes} = req.body;
             const postData = await postsService.addPost(user_id, posts_id, text, image, date, likes);
             return res.json(postData);
