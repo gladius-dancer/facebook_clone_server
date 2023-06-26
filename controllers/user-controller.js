@@ -3,7 +3,6 @@ const {validationResult} = require("express-validator");
 const ApiError = require("../exceptions/api-error");
 
 class UserController{
-
     async login(req, res, next){
         try {
             const {email, password} = req.body;
@@ -14,7 +13,6 @@ class UserController{
             next(e);
         }
     }
-
     async logout(req, res, next){
         try {
             const {refreshToken} = req.cookies;
@@ -25,7 +23,6 @@ class UserController{
             next(e);
         }
     }
-
     async register(req, res, next){
         try {
             const errors = validationResult(req);
@@ -40,7 +37,6 @@ class UserController{
             next(e);
         }
     }
-
     async refresh(req, res, next){
         try {
             const {refreshToken} = req.cookies;
@@ -51,7 +47,6 @@ class UserController{
             next(e);
         }
     }
-
     async activate(req, res, next){
         try {
             const activationLink = await req.params.link;
@@ -61,7 +56,6 @@ class UserController{
             next(e);
         }
     }
-
     async getUsers(req, res, next) {
         try {
             const users = await userServices.getAllUsers();
