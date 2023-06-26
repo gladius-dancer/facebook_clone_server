@@ -1,12 +1,11 @@
 const postsService = require("../services/posts-service");
-const {validationResult} = require("express-validator");
-const ApiError = require("../exceptions/api-error");
 
 class PostsController{
     async addPost(req, res, next){
         try {
-            const {user_id, posts_id, text, image, date, likes} = req.body;
-            const postData = await postsService.addPost(user_id, posts_id, text, image, date, likes);
+            const {user_id, post_id, text, image, likes} = req.body;
+            const date = new Date().toString();
+            const postData = await postsService.addPost(user_id, post_id, text, date, image, likes);
             return res.json(postData);
         }catch (e){
             next(e);
@@ -20,7 +19,6 @@ class PostsController{
             next(e);
         }
     }
-
 }
 
 module.exports = new PostsController();
