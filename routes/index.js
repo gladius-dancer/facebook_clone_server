@@ -18,8 +18,8 @@ router.get("/activate/:link", userController.activate);
 router.get("/refresh", userController.refresh);
 router.get("/users", authMiddleware, userController.getUsers);
 router.post("/add-post", authMiddleware, postsController.addPost);
-router.get("/get-all-posts", authMiddleware, postsController.getAllPosts);
+router.get("/posts", authMiddleware, postsController.getAllPosts);
 router.post("/add-comment", authMiddleware, commentsController.addComment);
-router.get("/get-all-comments", authMiddleware, commentsController.getAllComments);
+router.get("/comments", authMiddleware, commentsController.getAllComments);
 
 module.exports = router;

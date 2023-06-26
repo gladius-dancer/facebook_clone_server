@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Posts, Comments">
+    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Error fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/posts-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/posts-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/comments-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/comments-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/posts-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/posts-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/error-middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error-middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +92,8 @@
       <workItem from="1687445975735" duration="3799000" />
       <workItem from="1687590126626" duration="1127000" />
       <workItem from="1687711145299" duration="6769000" />
-      <workItem from="1687723771970" duration="2145000" />
+      <workItem from="1687723771970" duration="2532000" />
+      <workItem from="1687754278642" duration="241000" />
     </task>
     <task id="LOCAL-00001" summary="Second">
       <created>1687378345292</created>
@@ -185,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687725146526</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Error fix">
+      <created>1687725956884</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1687725956884</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +223,7 @@
     <MESSAGE value="Eleventh" />
     <MESSAGE value="Twelvth" />
     <MESSAGE value="Posts, Comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Posts, Comments" />
+    <MESSAGE value="Error fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Error fix" />
   </component>
 </project>

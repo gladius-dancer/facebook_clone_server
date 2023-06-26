@@ -15,7 +15,7 @@ class PostsController{
     async getAllPosts(req, res, next) {
         try {
             const posts = await postsService.getAllPosts();
-            return res.json(users);
+            return res.json(posts);
         } catch (e) {
             next(e);
         }
