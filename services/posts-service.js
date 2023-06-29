@@ -3,9 +3,8 @@ const UserModel = require("../models/user-model");
 const ApiError = require("../exceptions/api-error");
 
 class PostsService{
-    async addPost(user_id, text, date, image, likes){
-        console.log(typeof(date));
-        const post = await PostsModel.create({user_id, text, date, image, likes});
+    async addPost(user_id, text, date, image){
+        const post = await PostsModel.create({user_id, text, date, image, likes: 0});
         return post;
     }
 
