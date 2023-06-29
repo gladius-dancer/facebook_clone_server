@@ -9,8 +9,6 @@ class PostsService{
     }
 
     async getAllPosts(userId) {
-        const users = await UserModel.find();
-        const posts = await PostsModel.find();
         const user = await UserModel.findOne({ _id: userId });
         const friendIds = user?.friends;
         const friendsPosts = await PostsModel.find({ user_id: { $in: friendIds } });
