@@ -5,7 +5,7 @@ class PostsController{
         try {
             const {user_id, text, image} = req.body;
             const date = new Date().toString();
-            const postData = await postsService.addPost(user_id, text, date, image);
+            const postData = await postsService.addPost(userId, text, date, image);
             return res.json(postData);
         }catch (e){
             next(e);
@@ -14,6 +14,7 @@ class PostsController{
     async getAllPosts(req, res, next) {
         try {
             const userId = req.params.userId;
+            console.log(userId);
             const posts = await postsService.getAllPosts(userId);
             return res.json(posts);
         } catch (e) {
