@@ -1,6 +1,7 @@
 const PostsModel = require("../models/posts-model");
 const UserModel = require("../models/user-model");
 const ApiError = require("../exceptions/api-error");
+const {ObjectId} = require("mongodb");
 
 class PostsService{
     async addPost(userId, text, date, image){
@@ -10,9 +11,11 @@ class PostsService{
 
     async getAllPosts(userId) {
         const user = await UserModel.findOne({ _id: userId });
+        console.log(userId);
         const friendIds = user?.friends;
+
         const friendsPosts = await PostsModel.find({ user_id: { $in: friendIds } });
-        console.log(friendsPosts);
+
         return friendsPosts;
     }
 
