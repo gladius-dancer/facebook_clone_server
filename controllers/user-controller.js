@@ -65,6 +65,15 @@ class UserController{
         }
     }
 
+    async getFriends(req, res, next) {
+        try {
+            const users = await userServices.getFriends();
+            return res.json(users);
+        } catch (e) {
+            next(e);
+        }
+    }
+
 }
 
 module.exports = new UserController();

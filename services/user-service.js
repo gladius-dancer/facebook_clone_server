@@ -5,6 +5,7 @@ const mailService = require("./mail-service");
 const tokenServices = require("./token-service");
 const UserDto = require("../dtos/user-dto");
 const ApiError = require("../exceptions/api-error");
+const PostsModel = require("../models/posts-model");
 
 class UserService{
     async register(firstName, lastName, date, email, password, gender){
@@ -75,6 +76,12 @@ class UserService{
     async getAllUsers() {
         const users = await UserModel.find();
         return users;
+    }
+
+    async getFriends(user_id) {
+        const user = await UserModel.findOne({ _id: user_id });
+        const friends = await UserModel.find({ user_id: { $in: friendIds } }).toArray();
+        return friends;
     }
 
 }

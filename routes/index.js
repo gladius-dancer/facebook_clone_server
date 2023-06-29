@@ -17,6 +17,7 @@ router.post("/logout", userController.logout);
 router.get("/activate/:link", userController.activate);
 router.get("/refresh", userController.refresh);
 router.get("/users", authMiddleware, userController.getUsers);
+router.get("/friends", authMiddleware, userController.getFriends);
 router.post("/add-post", authMiddleware, postsController.addPost);
 router.get("/posts", authMiddleware, postsController.getAllPosts);
 router.post("/add-comment", authMiddleware, commentsController.addComment);
