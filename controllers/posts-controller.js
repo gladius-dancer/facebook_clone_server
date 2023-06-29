@@ -3,9 +3,9 @@ const postsService = require("../services/posts-service");
 class PostsController{
     async addPost(req, res, next){
         try {
-            const {user_id, post_id, text, image, likes} = req.body;
+            const {user_id, text, image, likes} = req.body;
             const date = new Date().toString();
-            const postData = await postsService.addPost(user_id, post_id, text, date, image, likes);
+            const postData = await postsService.addPost(user_id, text, date, image, likes);
             return res.json(postData);
         }catch (e){
             next(e);
