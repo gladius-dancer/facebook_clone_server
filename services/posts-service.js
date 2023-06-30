@@ -4,8 +4,8 @@ const ApiError = require("../exceptions/api-error");
 const {ObjectId} = require("mongodb");
 
 class PostsService{
-    async addPost(userId, text, date, image){
-        const post = await PostsModel.create({userId, text, date, image, likes: 0});
+    async addPost(text, date, type, size, name, path, user){
+        const post = await PostsModel.create({text, date, type, size, name, path, user, likes: 0});
         return post;
     }
 

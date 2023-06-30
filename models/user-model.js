@@ -1,4 +1,5 @@
 const {Schema, model} = require("mongoose");
+const {ObjectId} = require("mongodb");
 
 const UserSchema = new Schema({
     firstName: {type: String, required: true},
@@ -9,7 +10,11 @@ const UserSchema = new Schema({
     password: {type: String, required: true},
     isActive: {type: Boolean, default: false},
     activationLink: {type: String},
-    friends: {type: Array}
+    friends: {type: Array},
+    diskSpace: {type: Number, default: 1024**3*10},
+    usedSpace: {type: Number, default: 0},
+    // avatar: {type: String},
+    files : [{type: ObjectId}]
 });
 
 
