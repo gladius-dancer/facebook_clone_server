@@ -4,7 +4,9 @@ const PostsSchema = new Schema({
     user_id: {type: String, required: true},
     text: {type: String, required: true},
     date: {type: Date, required: true},
-    image: {type: String},
+    // file: { type: Buffer, required: true },
+    filename: { type: String, required: true },
+    // mimetype: { type: String, required: true },
     likes: {type: Number}
 });
 
