@@ -1,7 +1,10 @@
 const postsService = require("../services/posts-service");
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 class PostsController{
     async addPost(req, res, next){
+        upload.single('file');
         try {
             const {userId, text, image} = req.body;
             const date = new Date().toString();
