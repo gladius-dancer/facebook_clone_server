@@ -11,10 +11,8 @@ const UserSchema = new Schema({
     isActive: {type: Boolean, default: false},
     activationLink: {type: String},
     friends: {type: Array},
-    diskSpace: {type: Number, default: 1024**3*10},
-    usedSpace: {type: Number, default: 0},
     // avatar: {type: String},
-    files : [{type: ObjectId}]
+    files : [{type: ObjectId}],
 });
 
 

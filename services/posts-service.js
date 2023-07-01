@@ -3,34 +3,28 @@ const UserModel = require("../models/user-model");
 const ApiError = require("../exceptions/api-error");
 const {ObjectId} = require("mongodb");
 
-class PostsService{
-    async addPost(text, date, type, size, name, pathToFile, user){
-        const post = await PostsModel.create({text, date, type, size, name, pathToFile, user, likes: 0});
+class PostsService {
+    async addPost(text, date, type, name, idFile, pathToFile, user) {
+        const post = await PostsModel.create({text, date, type, name, idFile, pathToFile, user, likes: 0});
         return post;
     }
 
     async getAllPosts(userId) {
-        const user = await UserModel.findOne({ _id: userId });
+        const user = await UserModel.findOne({_id: userId});
 
-        PostsModel.aggregate([
-            {
-                $lookup:{
-                    from: "posts",
-                    localField: "user",
-                    foreignField: "_id",
-                    as: "combinedData"
+        const friendIds = user?.friends;
+        const result = await PostsModel.find({user: {$in: friendIds}})
+            .populate("user", "firstName")
+            .exec()
+            .then((friendsPosts) => {
+                return friendsPosts;
+            })
+            .catch((err) => {
+                console.error('Error querying posts:', err);
+                return err;
+            })
 
-                }
-            }
-        ]).then((result)=>{
-            // const friendIds = user?.friends;
-            // const friendsPosts =  result.combinedData.find({ user: { $in: friendIds } });
-            console.log(result);
-            // return friendsPosts;
-        }).catch((error)=>{
-            console.error(error);
-        })
-
+        return result;
     }
 }
 

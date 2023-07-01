@@ -7,11 +7,11 @@ const PostsSchema = new Schema({
     likes: {type: Number},
     name: {type: String, required: true},
     type: {type: String, required: true},
-    accessLink: {type:String},
-    // size: {type: String, default: 0},
+    idFile: {type:String, required: true},
     pathToFile: {type: String, default: ''},
     date: {type: Date, default: Date.now()},
-    user: {type: ObjectId},
+    user: {type: Schema.Types.ObjectId, ref: 'User'},
+    comments: [{type: Schema.Types.ObjectId, ref: 'comments'}]
 });
 
 module.exports = model("Posts", PostsSchema);

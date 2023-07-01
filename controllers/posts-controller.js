@@ -11,13 +11,13 @@ class PostsController {
             const type = file.mimetype;
             const filePath = file.data;
             const fileData = await fileController.uploadFile(filePath, file.name, type);
-            const path = await fileController.generatePublicUrl(fileData.id);
-            const pathToFile = path.webContentLink;
-
+            const publicURI = await fileController.generatePublicUrl(fileData.id);
+            const pathToFile = publicURI.webContentLink;
             const {text} = req.body;
             const date = new Date().toString();
-            const {size, name} = file;
-            const postData = await postsService.addPost(text, date, type, size, name, pathToFile, user);
+            const name = file.name;
+            const idFile = fileData.id;
+            const postData = await postsService.addPost(text, date, type, name, idFile, pathToFile, user);
 
             res.json(postData)
         } catch (e) {

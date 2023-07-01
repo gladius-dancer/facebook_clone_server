@@ -1,21 +1,21 @@
-const { google } = require('googleapis');
-const fs = require('fs');
-const { Readable } =  require('stream')
-const uuid = require("uuid");
+const {google} = require('googleapis');
+const {Readable} = require('stream')
+
+
 const oauth2Client = new google.auth.OAuth2(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
     process.env.REDIRECT_URI
 );
 
-oauth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
+oauth2Client.setCredentials({refresh_token: process.env.REFRESH_TOKEN});
 
 const drive = google.drive({
     version: 'v3',
     auth: oauth2Client,
 });
 
-class FileController{
+class FileController {
     async uploadFile(filePath, fileName, type) {
         try {
             const response = await drive.files.create({
@@ -23,26 +23,30 @@ class FileController{
                     name: fileName,
                     mimeType: type,
                 },
+                resource: {
+                    parents: [`${process.env.GOOGLE_PARRENT_FOLDER}`]
+                },
                 media: {
                     mimeType: type,
                     body: Readable.from(filePath),
-                },
+                }
             });
             return response.data;
         } catch (error) {
             console.log(error.message);
         }
     }
-    // async deleteFile() {
-    //     try {
-    //         const response = await drive.files.delete({
-    //             fileId: 'YOUR FILE ID',
-    //         });
-    //         console.log(response.data, response.status);
-    //     } catch (error) {
-    //         console.log(error.message);
-    //     }
-    // }
+
+    async deleteFile(fileId) {
+        try {
+            const response = await drive.files.delete({
+                fileId: fileId,
+            });
+            console.log(response.data, response.status);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
     async generatePublicUrl(fileId) {
         try {
             await drive.permissions.create({
