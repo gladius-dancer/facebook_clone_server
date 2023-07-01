@@ -5,7 +5,6 @@ const PostsSchema = new Schema({
     text: {type: String, required: true},
     file: {type: String},
     likes: {type: Number},
-    name: {type: String, required: true},
     type: {type: String, required: true},
     idFile: {type:String, required: true},
     pathToFile: {type: String, default: ''},

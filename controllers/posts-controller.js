@@ -15,9 +15,8 @@ class PostsController {
             const pathToFile = publicURI.webContentLink;
             const {text} = req.body;
             const date = new Date().toString();
-            const name = file.name;
             const idFile = fileData.id;
-            const postData = await postsService.addPost(text, date, type, name, idFile, pathToFile, user);
+            const postData = await postsService.addPost(text, date, type, idFile, pathToFile, user);
 
             res.json(postData)
         } catch (e) {
