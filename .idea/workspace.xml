@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Clear Posts fix">
+    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Posts fix">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/posts-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/posts-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/posts-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/posts-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/posts-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/posts-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +101,7 @@
       <workItem from="1688055504024" duration="1124000" />
       <workItem from="1688111366919" duration="25472000" />
       <workItem from="1688185879116" duration="11066000" />
-      <workItem from="1688202679316" duration="6953000" />
+      <workItem from="1688202679316" duration="10403000" />
     </task>
     <task id="LOCAL-00001" summary="Second">
       <created>1687378345292</created>
@@ -364,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688221122698</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Posts fix">
+      <created>1688224280881</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1688224280881</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,9 +402,9 @@
     <MESSAGE value="Error fix" />
     <MESSAGE value="Comments fix" />
     <MESSAGE value="Users fix" />
-    <MESSAGE value="Posts fix" />
     <MESSAGE value="Google disk link" />
     <MESSAGE value="Clear Posts fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clear Posts fix" />
+    <MESSAGE value="Posts fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Posts fix" />
   </component>
 </project>
