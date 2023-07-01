@@ -8,8 +8,8 @@ const PostsSchema = new Schema({
     name: {type: String, required: true},
     type: {type: String, required: true},
     accessLink: {type:String},
-    size: {type: String, default: 0},
-    path: {type: String, default: ''},
+    // size: {type: String, default: 0},
+    pathToFile: {type: String, default: ''},
     date: {type: Date, default: Date.now()},
     user: {type: ObjectId},
 });
