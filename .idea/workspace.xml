@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Posts fix">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Config fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dtos/user-dto.js" beforeDir="false" afterPath="$PROJECT_DIR$/dtos/user-dto.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +101,8 @@
       <workItem from="1688055504024" duration="1124000" />
       <workItem from="1688111366919" duration="25472000" />
       <workItem from="1688185879116" duration="11066000" />
-      <workItem from="1688202679316" duration="10403000" />
+      <workItem from="1688202679316" duration="10584000" />
+      <workItem from="1688275891727" duration="683000" />
     </task>
     <task id="LOCAL-00001" summary="Second">
       <created>1687378345292</created>
@@ -369,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688224280881</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Config fix">
+      <created>1688236993950</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1688236993950</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,6 +413,7 @@
     <MESSAGE value="Google disk link" />
     <MESSAGE value="Clear Posts fix" />
     <MESSAGE value="Posts fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Posts fix" />
+    <MESSAGE value="Config fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Config fix" />
   </component>
 </project>
