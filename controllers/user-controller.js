@@ -7,7 +7,12 @@ class UserController{
         try {
             const {email, password} = req.body;
             const userData = await userServices.login(email, password);
-            res.cookie("refreshToken", userData.refreshToken, {maxAge: 30*24*3600*1000, httpOnly: true});
+            res.cookie("refreshToken", userData.refreshToken, {
+                maxAge: 30*24*3600*1000,
+                httpOnly: true,
+                secure: true,
+                samaSite: 'none'
+            });
             return res.json(userData);
         }catch (e){
             next(e);

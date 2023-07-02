@@ -9,5 +9,6 @@ module.exports = class UserDto{
         this.isActivated = modal.isActivated;
         this.firstName = modal.firstName;
         this.lastName = modal.lastName;
+        this.avatar = modal.avatar;
     }
 }
