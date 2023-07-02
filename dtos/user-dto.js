@@ -8,5 +8,6 @@ module.exports = class UserDto{
         this.id = modal._id;
         this.isActivated = modal.isActivated;
         this.firstName = modal.firstName;
+        this.lastName = modal.lastName;
     }
 }
