@@ -7,6 +7,6 @@ module.exports = class UserDto{
         this.email = modal.email;
         this.id = modal._id;
         this.isActivated = modal.isActivated;
-        this.firstName;
+        this.firstName = modal.firstName;
     }
 }
