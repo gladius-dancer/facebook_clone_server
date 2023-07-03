@@ -63,22 +63,22 @@ class UserController{
     }
     async getUsers(req, res, next) {
         try {
-            const users = await userServices.getAllUsers();
+            const id = req.query.id;
+            const users = await userServices.getAllUsers(id);
             return res.json(users);
         } catch (e) {
             next(e);
         }
     }
-
     async getFriends(req, res, next) {
         try {
-            const users = await userServices.getFriends();
+            const id = req.query.id;
+            const users = await userServices.getFriends(id);
             return res.json(users);
         } catch (e) {
             next(e);
         }
     }
-
 }
 
 module.exports = new UserController();

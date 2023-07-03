@@ -78,13 +78,14 @@ class UserService{
         return user;
     }
 
-    async getAllUsers() {
-        const users = await UserModel.find();
+    async getAllUsers(id) {
+        const users = await UserModel.find({_id: {$ne: id}});
         return users;
     }
 
-    async getFriends(user_id) {
-        const user = await UserModel.findOne({ _id: user_id });
+    async getFriends(id) {
+        const user = await UserModel.findOne({ _id: id });
+        const friendIds = user.friends;
         const friends = await UserModel.find({ user_id: { $in: friendIds } }).toArray();
         return friends;
     }

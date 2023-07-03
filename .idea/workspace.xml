@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Clear">
+    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="User fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dtos/user-dto.js" beforeDir="false" afterPath="$PROJECT_DIR$/dtos/user-dto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user-model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +107,8 @@
       <workItem from="1688275891727" duration="1896000" />
       <workItem from="1688295363268" duration="2224000" />
       <workItem from="1688302301093" duration="5244000" />
+      <workItem from="1688319154985" duration="202000" />
+      <workItem from="1688363283389" duration="4525000" />
     </task>
     <task id="LOCAL-00001" summary="Second">
       <created>1687378345292</created>
@@ -409,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688280325757</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="User fix">
+      <created>1688319345185</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1688319345185</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -448,6 +457,7 @@
     <MESSAGE value="Config fix" />
     <MESSAGE value="Login fix" />
     <MESSAGE value="Clear" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clear" />
+    <MESSAGE value="User fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="User fix" />
   </component>
 </project>
