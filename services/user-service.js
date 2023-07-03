@@ -7,15 +7,24 @@ const UserDto = require("../dtos/user-dto");
 const ApiError = require("../exceptions/api-error");
 const PostsModel = require("../models/posts-model");
 
-class UserService{
-    async register(firstName, lastName, date, email, password, gender){
+class UserService {
+    async register(firstName, lastName, date, email, password, gender) {
         const candidat = await UserModel.findOne({email});
-        if(candidat){
+        if (candidat) {
             throw ApiError.BadRequest("A user with this email address already exists!")
         }
         const hashpassword = await bcrypt.hash(password, 3);
         const activationLink = uuid.v4();
-        const user = await UserModel.create({firstName, lastName, date, email, password: hashpassword, gender, friends: [], activationLink});
+        const user = await UserModel.create({
+            firstName,
+            lastName,
+            date,
+            email,
+            password: hashpassword,
+            gender,
+            friends: [],
+            activationLink
+        });
         await mailService.sendMailActivation(email, `${process.env.API_URL}/api/activate/${activationLink}`);
         const userDto = new UserDto(user);
         const tokens = tokenServices.generateTokens({...userDto});
@@ -24,9 +33,9 @@ class UserService{
         return {...tokens, user: userDto}
     }
 
-    async activate(activationLink){
+    async activate(activationLink) {
         const user = await UserModel.findOne({activationLink});
-        if(!user){
+        if (!user) {
             throw ApiError.BadRequest("Not corrected link!");
         }
 
@@ -34,13 +43,13 @@ class UserService{
         await user.save();
     }
 
-    async login(email, password){
+    async login(email, password) {
         const user = await UserModel.findOne({email});
-        if(!user){
+        if (!user) {
             throw ApiError.BadRequest("User not found!");
         }
         const isPasswordEquals = await bcrypt.compare(password, user.password);
-        if(!isPasswordEquals){
+        if (!isPasswordEquals) {
             throw ApiError.BadRequest("Incorrect password!");
         }
         const userDto = new UserDto(user);
@@ -50,26 +59,25 @@ class UserService{
         return {...tokens, user: userDto}
     }
 
-    async logout(refreshToken){
+    async logout(refreshToken) {
         const tokenData = await tokenServices.removeToken(refreshToken);
         return tokenData;
     }
 
-    async refresh(refreshToken){
-        if(!refreshToken){
+    async refresh(refreshToken) {
+        if (!refreshToken) {
             throw ApiError.UnauthorizedError();
         }
 
         const userData = await tokenServices.validateRefreshToken(refreshToken);
         const tokenFromDB = await tokenServices.findToken(refreshToken);
-        if(!userData || !tokenFromDB){
+        if (!userData || !tokenFromDB) {
             throw ApiError.UnauthorizedError();
         }
         const user = await UserModel.findById(userData.id)
         const userDto = new UserDto(user);
         const tokens = tokenServices.generateTokens({...userDto});
         await tokenServices.saveToken(userDto.id, tokens.refreshToken);
-
         return {...tokens, user: userDto}
     }
 
@@ -84,10 +92,17 @@ class UserService{
     }
 
     async getFriends(id) {
-        const user = await UserModel.findOne({ _id: id });
+        const user = await UserModel.findOne({_id: id});
         const friendIds = user.friends;
-        const friends = await UserModel.find({ user_id: { $in: friendIds } }).toArray();
+        const friends = await UserModel.find({_id: {$in: friendIds}});
         return friends;
+    }
+
+    async getUnfriends(id) {
+        const user = await UserModel.findOne({_id: id});
+        const friendIds = user.friends;
+        const unfriends = await UserModel.find({_id: {$not: {$eq: friendIds}}}).find({_id: {$ne: id}});
+        return unfriends;
     }
 
 }

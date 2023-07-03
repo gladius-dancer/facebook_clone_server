@@ -79,6 +79,15 @@ class UserController{
             next(e);
         }
     }
+    async getUnfriends(req, res, next) {
+        try {
+            const id = req.query.id;
+            const users = await userServices.getUnfriends(id);
+            return res.json(users);
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 module.exports = new UserController();
