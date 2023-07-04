@@ -7,9 +7,6 @@
     <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="User fix">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dtos/user-dto.js" beforeDir="false" afterPath="$PROJECT_DIR$/dtos/user-dto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +108,7 @@
       <workItem from="1688319154985" duration="202000" />
       <workItem from="1688363283389" duration="7420000" />
       <workItem from="1688463007316" duration="200000" />
-      <workItem from="1688463210931" duration="7198000" />
+      <workItem from="1688463210931" duration="8528000" />
     </task>
     <task id="LOCAL-00001" summary="Second">
       <created>1687378345292</created>
@@ -428,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688388187001</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="User fix">
+      <created>1688489756944</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1688489756944</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
