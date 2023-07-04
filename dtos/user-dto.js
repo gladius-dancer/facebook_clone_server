@@ -3,6 +3,8 @@ module.exports = class UserDto{
     id;
     isActivated;
     firstName;
+    lastName;
+    avatar;
     constructor(modal) {
         this.email = modal.email;
         this.id = modal._id;

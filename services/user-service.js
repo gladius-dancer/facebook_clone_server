@@ -23,7 +23,8 @@ class UserService {
             password: hashpassword,
             gender,
             friends: [],
-            activationLink
+            activationLink,
+            avatar:""
         });
         await mailService.sendMailActivation(email, `${process.env.API_URL}/api/activate/${activationLink}`);
         const userDto = new UserDto(user);
@@ -80,31 +81,28 @@ class UserService {
         await tokenServices.saveToken(userDto.id, tokens.refreshToken);
         return {...tokens, user: userDto}
     }
-
     async getUser(id) {
         const user = await UserModel.findOne({_id: id});
         return user;
     }
-
     async getAllUsers(id) {
         const users = await UserModel.find({_id: {$ne: id}});
         return users;
     }
-
     async getFriends(id) {
         const user = await UserModel.findOne({_id: id});
         const friendIds = user.friends;
-        const friends = await UserModel.find({_id: {$in: friendIds}});
+        let friends = await UserModel.find({_id: {$in: friendIds}});
+        friends = friends.map((friend)=> new UserDto(friend));
         return friends;
     }
-
     async getUnfriends(id) {
         const user = await UserModel.findOne({_id: id});
         const friendIds = user.friends;
-        const unfriends = await UserModel.find({_id: {$not: {$eq: friendIds}}}).find({_id: {$ne: id}});
+        let unfriends = await UserModel.find({_id: {$not: {$eq: friendIds}}}).find({_id: {$ne: id}});
+        unfriends = unfriends.map((unfriend)=> new UserDto(unfriend));
         return unfriends;
     }
-
 }
 
 module.exports = new UserService();

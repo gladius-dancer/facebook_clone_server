@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="User fix">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dtos/user-dto.js" beforeDir="false" afterPath="$PROJECT_DIR$/dtos/user-dto.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,7 +29,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Projects/hw_facebook_clone/client&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/hw_facebook_server&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,6 +110,8 @@
       <workItem from="1688302301093" duration="5244000" />
       <workItem from="1688319154985" duration="202000" />
       <workItem from="1688363283389" duration="7420000" />
+      <workItem from="1688463007316" duration="200000" />
+      <workItem from="1688463210931" duration="7198000" />
     </task>
     <task id="LOCAL-00001" summary="Second">
       <created>1687378345292</created>
