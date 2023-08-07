@@ -1,6 +1,9 @@
 const userServices = require("../services/user-service");
 const {validationResult} = require("express-validator");
 const ApiError = require("../exceptions/api-error");
+const UserModel = require("../models/user-model");
+const fileController = require("./file-controller");
+const postsService = require("../services/posts-service");
 
 class UserController{
     async login(req, res, next){
@@ -63,6 +66,25 @@ class UserController{
             next(e);
         }
     }
+
+    async addAvatar(req, res, next) {
+        try {
+            const file = req.files.file;
+            const type = file.mimetype;
+            const filePath = file.data;
+            const fileData = await fileController.uploadFile(filePath, file.name, type);
+            const publicURI = await fileController.generatePublicUrl(fileData.id);
+            const pathToFile = publicURI.webContentLink;
+            const avatarId = fileData.id;
+            const userData = await userServices.addAvatar(req.query.userId, pathToFile, avatarId);
+
+            res.json(userData)
+        } catch (e) {
+            console.log(e)
+            return res.status(500).json({message: "Upload error"})
+        }
+    }
+
     async getUsers(req, res, next) {
         try {
             const id = req.query.id;
@@ -74,7 +96,7 @@ class UserController{
     }
     async getFriends(req, res, next) {
         try {
-            const id = req.query.id;
+            const id = req.query.userId;
             const users = await userServices.getFriends(id);
             return res.json(users);
         } catch (e) {
@@ -83,13 +105,24 @@ class UserController{
     }
     async getUnfriends(req, res, next) {
         try {
-            const id = req.query.id;
+            const id = req.query.userId;
             const users = await userServices.getUnfriends(id);
             return res.json(users);
         } catch (e) {
             next(e);
         }
     }
+    async getFamilliars(req, res, next) {
+        try {
+            const id = req.query.userId;
+            const users = await userServices.getFamilliars(id);
+            return res.json(users);
+        } catch (e) {
+            next(e);
+        }
+    }
+
+
 }
 
 module.exports = new UserController();

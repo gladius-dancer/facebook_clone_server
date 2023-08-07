@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="User fix">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/file-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/file-controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user-model.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user-model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +31,8 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/hw_facebook_server&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/projects/facebook_clone&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -109,7 +115,21 @@
       <workItem from="1688363283389" duration="7420000" />
       <workItem from="1688463007316" duration="200000" />
       <workItem from="1688463210931" duration="9163000" />
-      <workItem from="1688533707566" duration="9068000" />
+      <workItem from="1688533707566" duration="9086000" />
+      <workItem from="1688624583980" duration="17000" />
+      <workItem from="1688624608942" duration="15000" />
+      <workItem from="1688629659509" duration="4878000" />
+      <workItem from="1688705928311" duration="8385000" />
+      <workItem from="1688996318824" duration="1352000" />
+      <workItem from="1689414192335" duration="1196000" />
+      <workItem from="1689431251193" duration="152000" />
+      <workItem from="1689743260395" duration="1165000" />
+      <workItem from="1689746998604" duration="618000" />
+      <workItem from="1689869024684" duration="1863000" />
+      <workItem from="1689917490374" duration="178000" />
+      <workItem from="1690280047030" duration="1182000" />
+      <workItem from="1690381108404" duration="626000" />
+      <workItem from="1691420406161" duration="1024000" />
     </task>
     <task id="LOCAL-00001" summary="Second">
       <created>1687378345292</created>
@@ -440,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688491468213</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="User fix">
+      <created>1688581740991</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1688581740991</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

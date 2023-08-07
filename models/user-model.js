@@ -11,6 +11,7 @@ const UserSchema = new Schema({
     activationLink: {type: String},
     friends: {type: Array},
     avatar: {type: String},
+    avatarId: {type: String},
 });
 
 module.exports = model("User", UserSchema);

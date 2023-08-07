@@ -81,6 +81,12 @@ class UserService {
         await tokenServices.saveToken(userDto.id, tokens.refreshToken);
         return {...tokens, user: userDto}
     }
+    async addAvatar(id, pathToFile, avatarId) {
+        const user = await UserModel.findOne({_id: id});
+        user.avatar = pathToFile;
+        user.avatarId = avatarId;
+        return user;
+    }
     async getUser(id) {
         const user = await UserModel.findOne({_id: id});
         return user;
@@ -102,6 +108,13 @@ class UserService {
         let unfriends = await UserModel.find({_id: {$not: {$eq: friendIds}}}).find({_id: {$ne: id}});
         unfriends = unfriends.map((unfriend)=> new UserDto(unfriend));
         return unfriends;
+    }
+    async getFamilliars(id) {
+        const user = await UserModel.findOne({_id: id});
+        const friendIds = user.friends;
+        let friends = await UserModel.find({_id: {$in: friendIds}});
+        let familliars = await friends.map((friend)=> UserModel.find({_id: {$in: friend.friends}}));
+        return familliars;
     }
 }
 

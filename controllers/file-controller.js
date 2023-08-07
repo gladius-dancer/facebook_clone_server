@@ -24,7 +24,7 @@ class FileController {
                     mimeType: type,
                 },
                 resource: {
-                    parents: [`${process.env.GOOGLE_PARRENT_FOLDER}`]
+                    parents: [process.env.GOOGLE_PARRENT_FOLDER]
                 },
                 media: {
                     mimeType: type,
