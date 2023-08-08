@@ -23,9 +23,9 @@ class FileController {
                     name: fileName,
                     mimeType: type,
                 },
-                resource: {
-                    parents: [process.env.GOOGLE_PARRENT_FOLDER]
-                },
+                // resource: {
+                //     parents: [process.env.GOOGLE_PARRENT_FOLDER]
+                // },
                 media: {
                     mimeType: type,
                     body: Readable.from(filePath),
