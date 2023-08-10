@@ -83,9 +83,8 @@ class UserService {
     }
     async addAvatar(id, pathToFile, avatarId) {
         const user = await UserModel.findOne({_id: id});
-        user.avatar = pathToFile;
-        user.avatarId = avatarId;
-        return user;
+        const avatar = {$set: {avatar: pathToFile}}
+        return await UserModel.updateOne(user, avatar);
     }
     async getUser(id) {
         const user = await UserModel.findOne({_id: id});
@@ -104,18 +103,46 @@ class UserService {
     }
     async getUnfriends(id) {
         const user = await UserModel.findOne({_id: id});
-        const friendIds = user.friends;
-        let unfriends = await UserModel.find({_id: {$not: {$eq: friendIds}}}).find({_id: {$ne: id}});
+        let unfriends = await UserModel.find({_id: {$ne : id}})
+        unfriends = unfriends.filter((item)=>!user.friends.includes(item._id));
         unfriends = unfriends.map((unfriend)=> new UserDto(unfriend));
         return unfriends;
     }
     async getFamilliars(id) {
         const user = await UserModel.findOne({_id: id});
-        const friendIds = user.friends;
-        let friends = await UserModel.find({_id: {$in: friendIds}});
-        let familliars = await friends.map((friend)=> UserModel.find({_id: {$in: friend.friends}}));
-        return familliars;
+        const friends = await UserModel.find({_id: {$in: user.friends}});
+        let unfriends = await UserModel.find({_id: {$ne : id}})
+        unfriends = unfriends.filter((item)=>!user.friends.includes(item._id));
+        let arr = []
+        friends.forEach((friend)=>{
+            friend.friends.forEach((item)=>{
+                arr.push(item);
+            })
+        })
+        let set = new Set(arr);
+        return unfriends.filter(user=>Array.from(set).includes(user._id.toString())).map((unfriend)=>new UserDto(unfriend));
     }
+
+    async friendRequest(id, candidate){
+        return await UserModel.findByIdAndUpdate(candidate, {$push:{requests: id}}, {new: true})
+    }
+
+    async cancelFriendRequest(id, candidate){
+        return await UserModel.findByIdAndUpdate(candidate, {$pull:{requests: id}}, {new: true})
+    }
+
+    async addToFriend(id, candidate){
+        await UserModel.findByIdAndUpdate(id, {$pull:{requests: candidate}}, {new: true})
+        const user = await UserModel.findByIdAndUpdate(id, {$push:{friends: candidate}}, {new: true})
+        return user;
+    }
+
+    async deleteFriendRequest(id, candidate){
+        return await UserModel.findByIdAndUpdate(id, {$pull:{requests: candidate}}, {new: true})
+
+    }
+
+
 }
 
 module.exports = new UserService();

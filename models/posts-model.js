@@ -4,7 +4,7 @@ const {ObjectId} = require("mongodb");
 const PostsSchema = new Schema({
     text: {type: String, required: true},
     file: {type: String},
-    likes: {type: Number},
+    likes: {type: Array},
     type: {type: String, required: true},
     idFile: {type:String, required: true},
     pathToFile: {type: String, default: ''},

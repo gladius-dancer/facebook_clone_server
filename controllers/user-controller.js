@@ -1,9 +1,7 @@
 const userServices = require("../services/user-service");
 const {validationResult} = require("express-validator");
 const ApiError = require("../exceptions/api-error");
-const UserModel = require("../models/user-model");
 const fileController = require("./file-controller");
-const postsService = require("../services/posts-service");
 
 class UserController{
     async login(req, res, next){
@@ -118,6 +116,50 @@ class UserController{
             const users = await userServices.getFamilliars(id);
             return res.json(users);
         } catch (e) {
+            next(e);
+        }
+    }
+
+    async friendRequest(req, res, next){
+        try{
+            const id = req.query.id;
+            const сandidate = req.query.candidate;
+            const user = await userServices.friendRequest(id, сandidate);
+            return res.json(user);
+        } catch (e){
+            next(e);
+        }
+    }
+
+    async cancelFriendRequest(req, res, next){
+        try{
+            const id = req.query.id;
+            const сandidate = req.query.candidate;
+            const user = await userServices.cancelFriendRequest(id, сandidate);
+            return res.json(user);
+        } catch (e){
+            next(e);
+        }
+    }
+
+    async addToFriend(req, res, next){
+        try{
+            const id = req.query.id;
+            const сandidate = req.query.candidate;
+            const user = await userServices.addToFriend(id, сandidate);
+            return res.json(user);
+        } catch (e){
+            next(e);
+        }
+    }
+
+    async deleteFriendRequest(req, res, next){
+        try{
+            const id = req.query.id;
+            const сandidate = req.query.candidate;
+            const user = await userServices.deleteFriendRequest(id, сandidate);
+            return res.json(user);
+        } catch (e){
             next(e);
         }
     }
