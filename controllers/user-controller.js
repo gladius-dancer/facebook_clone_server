@@ -23,7 +23,6 @@ class UserController{
 
         try {
             const {refreshToken} = req.cookies;
-            console.log("Hello");
             const tokenData = await userServices.logout(refreshToken);
             res.clearCookie("refreshToken", { httpOnly: true, secure: true, sameSite: 'strict' });
             return res.json(tokenData);
@@ -78,7 +77,6 @@ class UserController{
 
             res.json(userData)
         } catch (e) {
-            console.log(e)
             return res.status(500).json({message: "Upload error"})
         }
     }
@@ -101,9 +99,18 @@ class UserController{
             next(e);
         }
     }
+    async friendRequests(req, res, next) {
+        try {
+            const id = req.query.id;
+            const users = await userServices.friendRequests(id);
+            return res.json(users);
+        } catch (e) {
+            next(e);
+        }
+    }
     async getUnfriends(req, res, next) {
         try {
-            const id = req.query.userId;
+            const id = req.query.id;
             const users = await userServices.getUnfriends(id);
             return res.json(users);
         } catch (e) {

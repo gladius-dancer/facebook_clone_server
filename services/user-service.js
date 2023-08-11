@@ -101,10 +101,18 @@ class UserService {
         friends = friends.map((friend)=> new UserDto(friend));
         return friends;
     }
+    async friendRequests(id) {
+        const user = await UserModel.findOne({_id: id});
+        const requests = user.requests;
+        let userRequests = await UserModel.find({_id: {$in: requests}});
+        userRequests = userRequests.map((users)=> new UserDto(users));
+        return userRequests;
+    }
     async getUnfriends(id) {
         const user = await UserModel.findOne({_id: id});
         let unfriends = await UserModel.find({_id: {$ne : id}})
         unfriends = unfriends.filter((item)=>!user.friends.includes(item._id));
+        unfriends = unfriends.filter((item)=> !user.waiting.includes(item._id));
         unfriends = unfriends.map((unfriend)=> new UserDto(unfriend));
         return unfriends;
     }
@@ -113,6 +121,7 @@ class UserService {
         const friends = await UserModel.find({_id: {$in: user.friends}});
         let unfriends = await UserModel.find({_id: {$ne : id}})
         unfriends = unfriends.filter((item)=>!user.friends.includes(item._id));
+        unfriends = unfriends.filter((item)=> !user.requests.includes(item._id));
         let arr = []
         friends.forEach((friend)=>{
             friend.friends.forEach((item)=>{
@@ -124,6 +133,7 @@ class UserService {
     }
 
     async friendRequest(id, candidate){
+        await UserModel.findByIdAndUpdate(id, {$push:{waiting: candidate}}, {new: true})
         return await UserModel.findByIdAndUpdate(candidate, {$push:{requests: id}}, {new: true})
     }
 
@@ -132,8 +142,11 @@ class UserService {
     }
 
     async addToFriend(id, candidate){
-        await UserModel.findByIdAndUpdate(id, {$pull:{requests: candidate}}, {new: true})
-        const user = await UserModel.findByIdAndUpdate(id, {$push:{friends: candidate}}, {new: true})
+        await UserModel.findByIdAndUpdate(id, {$pull:{requests: candidate}}, {new: true});
+        await UserModel.findByIdAndUpdate(id, {$push:{friends: candidate}}, {new: true});
+        await UserModel.findByIdAndUpdate(candidate, {$pull:{waiting: id}}, {new: true});
+        await UserModel.findByIdAndUpdate(candidate, {$push:{friends: id}}, {new: true});
+        const user = await UserModel.findByIdAndUpdate(id, {$push:{friends: candidate}}, {new: true});
         return user;
     }
 

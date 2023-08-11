@@ -13,6 +13,7 @@ const UserSchema = new Schema({
     avatar: {type: String},
     avatarId: {type: String},
     requests: {type: Array},
+    waiting: {type: Array},
     notifications: {type: Array}
 });
 

@@ -19,6 +19,7 @@ router.get("/refresh", userController.refresh);
 router.post("/add-avatar", userController.addAvatar);
 router.get("/users", authMiddleware, userController.getUsers);
 router.get("/friends", authMiddleware, userController.getFriends);
+router.get("/friend-requests", authMiddleware, userController.friendRequests);
 router.get("/unfriends", authMiddleware, userController.getUnfriends);
 router.get("/familliars", authMiddleware, userController.getFamilliars);
 router.post("/add-post", authMiddleware, postsController.addPost);
