@@ -160,6 +160,17 @@ class UserController{
         }
     }
 
+    async deleteFriend(req, res, next){
+        try{
+            const id = req.query.id;
+            const сandidate = req.query.candidate;
+            const user = await userServices.deleteFriend(id, сandidate);
+            return res.json(user);
+        } catch (e){
+            next(e);
+        }
+    }
+
     async deleteFriendRequest(req, res, next){
         try{
             const id = req.query.id;

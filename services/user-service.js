@@ -138,7 +138,13 @@ class UserService {
     }
 
     async cancelFriendRequest(id, candidate){
+        await UserModel.findByIdAndUpdate(id, {$pull:{wait: candidate}}, {new: true})
         return await UserModel.findByIdAndUpdate(candidate, {$pull:{requests: id}}, {new: true})
+    }
+
+    async deleteFriend(id, candidate){
+        await UserModel.findByIdAndUpdate(id, {$pull:{friend: candidate}}, {new: true})
+        return await UserModel.findByIdAndUpdate(candidate, {$pull:{friend: id}}, {new: true})
     }
 
     async addToFriend(id, candidate){
@@ -151,6 +157,7 @@ class UserService {
     }
 
     async deleteFriendRequest(id, candidate){
+        await UserModel.findByIdAndUpdate(candidate, {$pull:{wait: id}}, {new: true})
         return await UserModel.findByIdAndUpdate(id, {$pull:{requests: candidate}}, {new: true})
 
     }

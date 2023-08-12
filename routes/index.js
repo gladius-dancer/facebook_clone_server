@@ -28,6 +28,7 @@ router.post("/add-comment", authMiddleware, commentsController.addComment);
 router.get("/comments", authMiddleware, commentsController.getAllComments);
 router.post("/friend-request", authMiddleware, userController.friendRequest);
 router.post("/add-to-friend", authMiddleware, userController.addToFriend);
+router.post("/delete-friend", authMiddleware, userController.deleteFriend);
 router.post("/cancel-friend-request", authMiddleware, userController.cancelFriendRequest);
 router.post("/delete-friend-request", authMiddleware, userController.deleteFriendRequest);
 
