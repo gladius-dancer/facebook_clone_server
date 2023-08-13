@@ -1,5 +1,4 @@
 const UserModel = require("../models/user-model");
-const OnlineUser = require("../models/online-users-model");
 const bcrypt = require("bcrypt");
 const uuid = require("uuid");
 const mailService = require("./mail-service");
@@ -57,7 +56,6 @@ class UserService {
         const userDto = new UserDto(user);
         const tokens = tokenServices.generateTokens({...userDto});
         await tokenServices.saveToken(userDto.id, tokens.refreshToken);
-        await OnlineUser.updateOne({id:'online'}, {$push:{users: user._id.toString()}}, {new: true});
         return {...tokens, user: userDto}
     }
 
@@ -160,10 +158,7 @@ class UserService {
     async deleteFriendRequest(id, candidate){
         await UserModel.findByIdAndUpdate(candidate, {$pull:{wait: id}}, {new: true})
         return await UserModel.findByIdAndUpdate(id, {$pull:{requests: candidate}}, {new: true})
-
     }
-
-
 }
 
 module.exports = new UserService();
