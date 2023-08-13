@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const fileUpload = require("express-fileupload");
 const mongoose = require("mongoose");
 const router = require("./routes/index");
+const socket = require("./controllers/socket-controller");
 const errorMiddleware = require("./middlewares/error-middleware");
 
 const PORT = process.env.PORT || 5000;
@@ -17,6 +18,8 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true,
 }));
+
+socket();
 
 app.use("/api", router);
 
