@@ -28,20 +28,7 @@ async function socket() {
         console.log("Connected");
         socket.on("newUser", (userId) => {
             addNewUser(userId, socket.id);
-
         });
-
-        // socket.on("sendNotification", async (data) => {
-        //     const {senderId, receiverId, type} = data;
-        //     await UserModel.findByIdAndUpdate(receiverId, {$push:{notifications: {type: type, sender: senderId} }}, {new: true})
-        //     const sender = await UserModel.findOne({_id: senderId});
-        //     const senderName = sender.firstName;
-        //     const receiver = await getUser(receiverId);
-        //     io.to(receiver?.socketId).emit("getNotification", {
-        //         senderName,
-        //         type,
-        //     });
-        // });
 
         socket.on("sendNotification", async (data) => {
             const {senderId, receiverId, type} = data;
@@ -56,10 +43,7 @@ async function socket() {
                 senderName,
                 type,
             });
-
-            // io.to(socket.id).emit("getNotification", socket.id);
         });
-
 
         socket.on("sendText", ({senderId, receiverId, text}) => {
             const receiver = getUser(receiverId);
@@ -68,7 +52,6 @@ async function socket() {
                 text,
             });
         });
-
 
         socket.on("disconnect", () => {
             console.log("Disconnected");
