@@ -11,6 +11,7 @@ const io = new Server({
 const  addNewUser = async (userId, socketId) => {
     const data = await OnlineUser.findOne({ socketId: socketId})
     if(!data){
+        await OnlineUser.deleteMany({id: userId});
         await OnlineUser.create({id: userId,  socketId: socketId});
     }
 };
@@ -24,22 +25,41 @@ const getUser = async (id) => {
 };
 async function socket() {
     io.on("connection", (socket) => {
-        console.log("Connected")
+        console.log("Connected");
         socket.on("newUser", (userId) => {
             addNewUser(userId, socket.id);
+
         });
 
-        socket.on("sendNotification", async ({senderId, receiverId, type}) => {
-            await UserModel.findByIdAndUpdate(receiverId, {$push:{notifications: {type: type, sender: senderId} }}, {new: true})
+        // socket.on("sendNotification", async (data) => {
+        //     const {senderId, receiverId, type} = data;
+        //     await UserModel.findByIdAndUpdate(receiverId, {$push:{notifications: {type: type, sender: senderId} }}, {new: true})
+        //     const sender = await UserModel.findOne({_id: senderId});
+        //     const senderName = sender.firstName;
+        //     const receiver = await getUser(receiverId);
+        //     io.to(receiver?.socketId).emit("getNotification", {
+        //         senderName,
+        //         type,
+        //     });
+        // });
+
+        socket.on("sendNotification", async (data) => {
+            const {senderId, receiverId, type} = data;
+            await UserModel.findByIdAndUpdate(receiverId, {$push:{notifications: {type: type, sender: senderId} }}, {new: true});
             const sender = await UserModel.findOne({_id: senderId});
             const senderName = sender.firstName;
             const receiver = await getUser(receiverId);
+            console.log(senderId);
             console.log(receiver?.socketId);
-            io.to(receiver?.socketId).emit("getNotification", {
+            console.log(type);
+            io.to(receiver.socketId).emit("getNotification", {
                 senderName,
                 type,
             });
+
+            // io.to(socket.id).emit("getNotification", socket.id);
         });
+
 
         socket.on("sendText", ({senderId, receiverId, text}) => {
             const receiver = getUser(receiverId);
