@@ -2,6 +2,7 @@ const Router = require("express").Router;
 const userController = require("../controllers/user-controller");
 const postsController = require("../controllers/posts-controller");
 const commentsController = require("../controllers/comments-controller");
+const notificationController = require("../controllers/notification-controller");
 const {body} = require("express-validator");
 const authMiddleware = require("../middlewares/auth-middleware");
 
@@ -26,6 +27,8 @@ router.post("/add-post", authMiddleware, postsController.addPost);
 router.get("/posts", authMiddleware, postsController.getAllPosts);
 router.post("/add-comment", authMiddleware, commentsController.addComment);
 router.get("/comments", authMiddleware, commentsController.getAllComments);
+router.get("/notifications", authMiddleware, notificationController.getNotifications);
+router.post("/delete-notification", authMiddleware, notificationController.deleteNotification);
 router.post("/friend-request", authMiddleware, userController.friendRequest);
 router.post("/add-to-friend", authMiddleware, userController.addToFriend);
 router.post("/delete-friend", authMiddleware, userController.deleteFriend);

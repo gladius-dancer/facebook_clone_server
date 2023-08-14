@@ -1,6 +1,7 @@
 const {Server} = require("socket.io");
 const OnlineUser = require("../models/online-users-model");
 const UserModel = require("../models/user-model");
+const uuid = require("uuid");
 
 const io = new Server({
     cors: {
@@ -32,17 +33,13 @@ async function socket() {
 
         socket.on("sendNotification", async (data) => {
             const {senderId, receiverId, type} = data;
-            await UserModel.findByIdAndUpdate(receiverId, {$push:{notifications: {type: type, sender: senderId} }}, {new: true});
             const sender = await UserModel.findOne({_id: senderId});
-            const senderName = sender.firstName;
+            await UserModel.findByIdAndUpdate(receiverId, {$push:{notifications: {id: uuid.v4(),type: type, sender: sender.firstName, avatar: sender.avatar  }}}, {new: true});
             const receiver = await getUser(receiverId);
-            console.log(senderId);
-            console.log(receiver?.socketId);
-            console.log(type);
-            io.to(receiver.socketId).emit("getNotification", {
-                senderName,
-                type,
-            });
+            const user = await UserModel.findOne({_id: receiverId});
+            if(receiver){
+                io.to(receiver.socketId).emit("getNotification", user.notifications);
+            }
         });
 
         socket.on("sendText", ({senderId, receiverId, text}) => {

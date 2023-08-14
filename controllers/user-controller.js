@@ -74,7 +74,6 @@ class UserController{
             const pathToFile = publicURI.webContentLink;
             const avatarId = fileData.id;
             const userData = await userServices.addAvatar(req.query.userId, pathToFile, avatarId);
-
             res.json(userData)
         } catch (e) {
             return res.status(500).json({message: "Upload error"})

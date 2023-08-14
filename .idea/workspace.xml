@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Socket">
+      <change afterPath="$PROJECT_DIR$/controllers/notification-controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/notification-service.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/socket-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/socket-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +149,7 @@
       <workItem from="1691859995424" duration="6413000" />
       <workItem from="1691903610721" duration="25917000" />
       <workItem from="1691947898018" duration="5751000" />
-      <workItem from="1691989939061" duration="6205000" />
+      <workItem from="1691989939061" duration="17710000" />
     </task>
     <task id="LOCAL-00002" summary="Second">
       <created>1687380103342</created>
@@ -489,7 +494,7 @@
       <option name="project" value="LOCAL" />
       <updated>1691476160001</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
