@@ -17,7 +17,6 @@ class PostsController {
             const date = new Date().toString();
             const idFile = fileData.id;
             const postData = await postsService.addPost(text, date, type, idFile, pathToFile, user);
-
             res.json(postData)
         } catch (e) {
             console.log(e)

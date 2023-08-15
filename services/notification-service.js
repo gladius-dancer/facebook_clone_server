@@ -3,7 +3,7 @@ const UserModel = require("../models/user-model");
 class NotificationService{
     async getNotifications(id){
         const user = await UserModel.findOne({_id: id});
-        return user.notifications;
+        return user?.notifications;
     }
 
     async deleteNotification(id, notificationId){
