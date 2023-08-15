@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Notification">
-      <change afterPath="$PROJECT_DIR$/controllers/chat-controller.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/chat-model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+    <list default="true" id="5a5fe164-40a9-4df1-90d9-0668aca085a7" name="Changes" comment="Chat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/posts-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/posts-controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/notification-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/notification-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/socket-controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/socket-controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/posts-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/posts-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +147,8 @@
       <workItem from="1691903610721" duration="25917000" />
       <workItem from="1691947898018" duration="5751000" />
       <workItem from="1691989939061" duration="18325000" />
-      <workItem from="1692077068164" duration="11818000" />
+      <workItem from="1692077068164" duration="11849000" />
+      <workItem from="1692126216383" duration="2450000" />
     </task>
     <task id="LOCAL-00002" summary="Second">
       <created>1687380103342</created>
@@ -494,7 +493,7 @@
       <option name="project" value="LOCAL" />
       <updated>1691476160001</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -512,7 +511,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fivth" />
     <MESSAGE value="Sixth" />
     <MESSAGE value="Seventh" />
     <MESSAGE value="Eighth" />
@@ -537,6 +535,7 @@
     <MESSAGE value="Friends add fix" />
     <MESSAGE value="Socket" />
     <MESSAGE value="Notification" />
-    <option name="LAST_COMMIT_MESSAGE" value="Notification" />
+    <MESSAGE value="Chat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chat" />
   </component>
 </project>

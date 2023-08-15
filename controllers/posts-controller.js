@@ -32,6 +32,8 @@ class PostsController {
             next(e);
         }
     }
+
+
 }
 
 module.exports = new PostsController();
