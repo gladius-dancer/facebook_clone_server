@@ -47,20 +47,19 @@ async function socket() {
             const {userId, receiverId, postId, type} = data;
             const sender = await UserModel.findOne({_id: userId});
             const post = await PostsModel.findOne({_id: postId});
-            if(!post.likes.includes(userId)){
+            if(!post?.likes?.includes(userId)){
                 await PostsModel.findByIdAndUpdate(postId, {$push:{likes: userId}}, {new: true});
                 await UserModel.findByIdAndUpdate(receiverId, {$push:{notifications: {id: uuid.v4(),type: type, sender: sender.firstName, avatar: sender.avatar  }}}, {new: true});
                 const receiver = await getUser(receiverId);
                 const user = await UserModel.findOne({_id: receiverId});
-                io.to(socket.id).emit("getLike", user.notifications);
+                io.to(socket.id).emit("getLike", {postId: postId, userId: userId, status: true});
                 if(receiver){
                     io.to(receiver.socketId).emit("getNotification", user.notifications);
                 }
             }else{
                 await PostsModel.findByIdAndUpdate(postId, {$pull:{likes: userId}}, {new: true})
-                io.to(socket.id).emit("getLike", user.notifications);
+                io.to(socket.id).emit("getLike", {postId: postId, userId: userId, status: false});
             }
-
         });
 
         socket.on("sendText", ({senderId, receiverId, text}) => {
