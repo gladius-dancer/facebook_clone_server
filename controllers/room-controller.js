@@ -1,6 +1,6 @@
 
 
-class chatController {
+class roomController {
     async getNotifications(req, res, next){
         try{
             // const id = req.query.id;
@@ -13,4 +13,4 @@ class chatController {
 
 }
 
-module.exports = new chatController();
+module.exports = new roomController();
