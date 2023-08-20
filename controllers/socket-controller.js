@@ -41,11 +41,13 @@ async function socket() {
         socket.on('join_room', async (data) => {
             let room = "";
             const { userId, reciverId } = data; // Data sent from client when join_room event emitted
-            const roomItem =  await RoomsModel.findOne({$or: [{user1: userId, user2: reciverId}, {user2: userId, user1: reciverId}]});
+            console.log(data);
+            // const roomItem =  await RoomsModel.findOne({$or: [{$and:{user1: userId, user2: reciverId}}, {$and: {user2: userId, user1: reciverId}}]});
+            const roomItems =  await RoomsModel.find();
+            const roomItem = roomItems.filter((item)=>item.user1 === userId && item.user2 === reciverId || item.user2 === userId && item.user1 === reciverId);
 
-            if(!!roomItem?.id){
-                console.log(roomItem?.id);
-                room = roomItem?.id;
+            if(!!roomItem[0]?.id){
+                room = roomItem[0]?.id;
             }else{
                 const roomId= uuid.v4();
                 RoomsModel.create({id: roomId, user1: userId, user2: reciverId, history: []});
@@ -58,8 +60,9 @@ async function socket() {
 
         socket.on('send_message', async (data) => {
             const { message, userId, reciverId, __createdtime__ } = data;
-            const roomItem =  await RoomsModel.find({$or: [{user1: userId, user2: reciverId}, {user2: userId, user1: reciverId}]});
-            await RoomsModel.findOneAndUpdate({id: roomItem[0].id}, {$push:{history:  {
+            const roomItems =  await RoomsModel.find();
+            const roomItem = roomItems.filter((item)=>item.user1 === userId && item.user2 === reciverId || item.user2 === userId && item.user1 === reciverId);
+            await RoomsModel.findOneAndUpdate({id: roomItem[0]?.id}, {$push:{history:  {
                         id: uuid.v4(),
                         message: message,
                         username: userId,
