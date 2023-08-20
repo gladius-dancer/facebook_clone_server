@@ -27,10 +27,6 @@ const getUser = async (id) => {
     return user;
 };
 
-// const CHAT_BOT = 'ChatBot';
-// let chatRoom = ''; // E.g. javascript, node,...
-// let allUsers = []; // All users in current chat room
-
 async function socket() {
     io.on("connection", (socket) => {
         console.log("Connected");
@@ -41,8 +37,6 @@ async function socket() {
         socket.on('join_room', async (data) => {
             let room = "";
             const { userId, reciverId } = data; // Data sent from client when join_room event emitted
-            console.log(data);
-            // const roomItem =  await RoomsModel.findOne({$or: [{$and:{user1: userId, user2: reciverId}}, {$and: {user2: userId, user1: reciverId}}]});
             const roomItems =  await RoomsModel.find();
             const roomItem = roomItems.filter((item)=>item.user1 === userId && item.user2 === reciverId || item.user2 === userId && item.user1 === reciverId);
 
@@ -106,14 +100,6 @@ async function socket() {
                 await PostsModel.findByIdAndUpdate(postId, {$pull:{likes: userId}}, {new: true})
                 io.to(socket.id).emit("getLike", {postId: postId, userId: userId, status: false});
             }
-        });
-
-        socket.on("sendText", ({senderId, receiverId, text}) => {
-            const receiver = getUser(receiverId);
-            io.to(receiver.socketId).emit("getText", {
-                senderId,
-                text,
-            });
         });
 
         socket.on("disconnect", () => {
