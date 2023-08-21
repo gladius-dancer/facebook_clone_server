@@ -36,7 +36,7 @@ async function socket() {
 
         socket.on('join_room', async (data) => {
             let room = "";
-            const { userId, reciverId } = data; // Data sent from client when join_room event emitted
+            const { userId, reciverId } = data;
             const roomItems =  await RoomsModel.find();
             const roomItem = roomItems.filter((item)=>item.user1 === userId && item.user2 === reciverId || item.user2 === userId && item.user1 === reciverId);
 
@@ -53,16 +53,17 @@ async function socket() {
         });
 
         socket.on('send_message', async (data) => {
-            const { message, userId, reciverId, __createdtime__ } = data;
+            const { message, userId, reciverId, __createdTime__} = data;
             const roomItems =  await RoomsModel.find();
             const roomItem = roomItems.filter((item)=>item.user1 === userId && item.user2 === reciverId || item.user2 === userId && item.user1 === reciverId);
             await RoomsModel.findOneAndUpdate({id: roomItem[0]?.id}, {$push:{history:  {
                         id: uuid.v4(),
                         message: message,
                         username: userId,
-                        __createdtime__: __createdtime__
+                        __createdTime__: __createdTime__,
+                        __createdDate__: new Date(__createdTime__).toLocaleDateString(),
                     }}}, {new: true});
-            io.in(roomItem[0].id).emit('receive_message', data); // Send to all users in room, including sender
+            io.in(roomItem[0].id).emit('receive_message', data);
         });
 
         socket.on('leave_room', async (data) => {
